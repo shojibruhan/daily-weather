@@ -6,6 +6,7 @@ function App() {
     queryKey: ["weather"],
     queryFn: () => getWeather({ lat: 50, lon: 50 }),
   });
+  console.log(data);
 
   return (
     <div>
