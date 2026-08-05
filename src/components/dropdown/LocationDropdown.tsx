@@ -15,11 +15,18 @@ type Props = {
 
 const LocationDropdown = ({ location, setLocation }: Props) => {
   return (
-    <Select value={location} onValueChange={(value) => setLocation(value)}>
+    <Select
+      value={location}
+      onValueChange={(value) => {
+        if (value !== null) {
+          setLocation(value);
+        }
+      }}
+    >
       <SelectTrigger className="w-45">
         <SelectValue placeholder="Location" />
       </SelectTrigger>
-      <SelectContent className="z-[10000001]">
+      <SelectContent className="z-1001">
         <SelectGroup>
           {locations.map((city) => (
             <SelectItem key={city} value={city}>
