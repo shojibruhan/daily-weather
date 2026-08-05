@@ -1,17 +1,23 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import getWeather from "../../api/api";
+import type { Coords } from "../../types";
 import Card from "./Card";
 import WeatherIcon from "./WeatherIcon";
 
-type Props = {};
+type Props = {
+  coords: Coords;
+};
 
-const WeatherInfo = ({}: Props) => {
+const WeatherInfo = ({ coords }: Props) => {
+  const { lat, lon } = coords;
   const { data } = useSuspenseQuery({
-    queryKey: ["weather"],
-    queryFn: () => getWeather({ lat: 50, lon: 50 }),
+    queryKey: ["weather", coords],
+    queryFn: () => getWeather({ lat: lat, lon: lon }),
   });
   return (
     <Card title="Details" childrenClassName="flex flex-col items-center gap-6">
+      Country Name:{" "}
+      <h2 className="font-semibold text-amber-100 text-xl">{data?.name}</h2>
       <div className="flex flex-col items-center">
         <h2 className="text-6xl font-semibold text-center text-amber-100">
           {Math.round(data?.main.temp)}℃
