@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from "react";
 import {
   Select,
   SelectContent,
@@ -7,13 +8,18 @@ import {
   SelectValue,
 } from "../ui/select";
 
-const LocationDropdown = () => {
+type Props = {
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
+};
+
+const LocationDropdown = ({ location, setLocation }: Props) => {
   return (
-    <Select>
+    <Select value={location} onValueChange={(value) => setLocation(value)}>
       <SelectTrigger className="w-45">
         <SelectValue placeholder="Location" />
       </SelectTrigger>
-      <SelectContent className="z-1001">
+      <SelectContent className="z-[10000001]">
         <SelectGroup>
           {locations.map((city) => (
             <SelectItem key={city} value={city}>
@@ -41,4 +47,5 @@ const locations = [
   "Madrid",
   "Rome",
   "Lisbon",
+  "Dhaka",
 ];
