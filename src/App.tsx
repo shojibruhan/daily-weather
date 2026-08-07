@@ -7,6 +7,7 @@ import WeatherInfo from "./components/cards/WeatherInfo";
 import LocationDropdown from "./components/dropdown/LocationDropdown";
 import MapTypeDropdown from "./components/dropdown/MapTypeDropdown";
 import Map from "./components/Map";
+import MapLegend from "./components/MapLegend";
 import type { Coords } from "./types";
 
 function App() {
@@ -44,7 +45,10 @@ function App() {
           <MapTypeDropdown mapType={mapType} setMapType={setMapType} />
         </div>
       </div>
-      <Map coords={coords} onMapClick={onMapClick} mapType={mapType} />
+      <div className="relative">
+        <Map coords={coords} onMapClick={onMapClick} mapType={mapType} />
+        <MapLegend mapType={mapType} />
+      </div>
       <WeatherInfo coords={coords} />
       <Summary coords={coords} />
       <AdditionaInfo coords={coords} />
