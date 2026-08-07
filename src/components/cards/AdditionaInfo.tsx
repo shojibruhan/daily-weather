@@ -15,7 +15,7 @@ const AdditionaInfo = ({ coords }: Props) => {
     queryFn: () => getWeather({ lat: lat, lon: lon }),
   });
   return (
-    <Card title="Addition Weather Info" childrenClassName="flex flex-col gap-8">
+    <Card title="Addition Weather Info" childrenClassName="flex flex-col">
       {rows.map(({ label, value }) => (
         <div className="flex justify-between" key={label}>
           <span>{label}</span>

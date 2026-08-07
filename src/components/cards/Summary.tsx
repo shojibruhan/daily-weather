@@ -14,7 +14,7 @@ const Summary = ({ coords }: Props) => {
     queryKey: ["weather", coords],
     queryFn: () => getWeather({ lat, lon }),
   });
-  console.log(data.weather[0].icon);
+
   return (
     <Card title="Weather Summary" childrenClassName="flex flex-col gap-4">
       <p className="text-center">

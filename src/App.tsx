@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { getGeoCodeLocation } from "./api/api";
 import AdditionaInfo from "./components/cards/AdditionaInfo";
 import Summary from "./components/cards/Summary";
@@ -8,6 +8,9 @@ import LocationDropdown from "./components/dropdown/LocationDropdown";
 import MapTypeDropdown from "./components/dropdown/MapTypeDropdown";
 import Map from "./components/Map";
 import MapLegend from "./components/MapLegend";
+import AdditionInfoSkeleton from "./components/skeleton/AdditionInfoSkeleton";
+import SummarySkeleton from "./components/skeleton/SummarySkeleton";
+import WeatherInfoSkeleton from "./components/skeleton/WeatherInfoSkeleton";
 import type { Coords } from "./types";
 
 function App() {
@@ -49,9 +52,15 @@ function App() {
         <Map coords={coords} onMapClick={onMapClick} mapType={mapType} />
         <MapLegend mapType={mapType} />
       </div>
-      <WeatherInfo coords={coords} />
-      <Summary coords={coords} />
-      <AdditionaInfo coords={coords} />
+      <Suspense fallback={<WeatherInfoSkeleton />}>
+        <WeatherInfo coords={coords} />
+      </Suspense>
+      <Suspense fallback={<SummarySkeleton />}>
+        <Summary coords={coords} />
+      </Suspense>
+      <Suspense fallback={<AdditionInfoSkeleton />}>
+        <AdditionaInfo coords={coords} />
+      </Suspense>
     </div>
   );
 }
