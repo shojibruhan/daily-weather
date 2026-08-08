@@ -15,8 +15,8 @@ const WeatherInfo = ({ coords }: Props) => {
     queryFn: () => getWeather({ lat: lat, lon: lon }),
   });
   return (
-    <Card title="Details" childrenClassName="flex flex-col items-center gap-6">
-      Country Name:{" "}
+    <Card title="Details" childrenClassName="flex flex-col items-center">
+      <span>Country Name:</span>
       <h2 className="font-semibold text-amber-100 text-xl">{data?.name}</h2>
       <div className="flex flex-col items-center">
         <h2 className="text-6xl font-semibold text-center text-amber-100">
@@ -26,10 +26,10 @@ const WeatherInfo = ({ coords }: Props) => {
           src={`https://openweathermap.org/payload/api/media/file/${data.weather[0].icon}.png`}
           iconSize="size-16"
         />
-        <h3 className="capitalize text-xl">{data?.weather[0].description}</h3>
+        <h3 className="capitalize text-md">{data?.weather[0].description}</h3>
       </div>
       <div className="flex flex-col gap-2 text-center">
-        <p className="text-xl">Local Time:</p>
+        <p className="text-md">Local Time:</p>
         <h3 className="text-4xl font-semibold">
           {new Intl.DateTimeFormat("en-US", {
             hour: "2-digit",

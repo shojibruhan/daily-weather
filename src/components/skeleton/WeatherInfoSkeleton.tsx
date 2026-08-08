@@ -3,8 +3,8 @@ import { Skeleton } from "../ui/skeleton";
 
 const WeatherInfoSkeleton = () => {
   return (
-    <Card title="Details" childrenClassName="flex flex-col items-center ">
-      Country Name: <Skeleton className="w-30 h-4" />
+    <Card title="Details" childrenClassName="flex flex-col items-center">
+      <span>Country Name:</span> <Skeleton className="w-30 h-4" />
       <div className="flex flex-col items-center ">
         <Skeleton className="w-30 h-15" />
         <Skeleton className="size-14 rounded-full" />
@@ -21,10 +21,9 @@ const WeatherInfoSkeleton = () => {
         </div>
         <div className="flex flex-col items-center gap-2">
           <p className="text-gray-500">Feels Like</p>
-          <p>
-            {" "}
+          <div>
             <Skeleton className="w-16 h-6" />
-          </p>
+          </div>
         </div>
         <div className="flex flex-col items-center gap-2">
           <p className="text-gray-500">Wind </p>

@@ -1,4 +1,4 @@
-import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
+import { MapStyle, MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
 import "leaflet/dist/leaflet.css";
 import { useEffect } from "react";
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
@@ -20,7 +20,7 @@ const Map = ({ coords, onMapClick, mapType }: Props) => {
       // key={`${coords.lat}, ${coords.lon}`}
       center={[lat, lon]}
       zoom={5}
-      style={{ width: "1600px", height: "500px" }}
+      style={{ width: "100%", height: "500px" }}
     >
       <MapClick onMapClick={onMapClick} coords={coords} />
       {/* <TileLayer
@@ -60,7 +60,7 @@ const MapTileLayer = () => {
 
   useEffect(() => {
     const tileLayer = new MaptilerLayer({
-      style: "basic-dark",
+      style: MapStyle.DATAVIZ.DARK,
       apiKey: MAP_API_KEY,
     });
     tileLayer.addTo(map);

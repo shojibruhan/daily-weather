@@ -23,13 +23,13 @@ const LocationDropdown = ({ location, setLocation }: Props) => {
         }
       }}
     >
-      <SelectTrigger className="w-45">
-        <SelectValue placeholder="Location" />
+      <SelectTrigger className="w-64 max-h-6   md:w-45 md:min-h-8">
+        <SelectValue placeholder="Location" className="text-xs" />
       </SelectTrigger>
       <SelectContent className="z-1001">
         <SelectGroup>
           {locations.map((city) => (
-            <SelectItem key={city} value={city}>
+            <SelectItem className="text-xs" key={city} value={city}>
               {city}
             </SelectItem>
           ))}

@@ -21,15 +21,15 @@ const SummarySkeleton = () => {
           Wind Condition
         </h2>
         <div className="flex justify-around">
-          <p>
-            Wind Speed: <Skeleton className="w-36 h-6" />
-          </p>
-          <p>
+          <div>
+            Wind Sdiveed: <Skeleton className="w-36 h-6" />
+          </div>
+          <div>
             Wind Deg: <Skeleton className="w-36 h-6" />
-          </p>
-          <p>
+          </div>
+          <div>
             Wind Gust: <Skeleton className="w-36 h-6" />
-          </p>
+          </div>
         </div>
       </div>
     </Card>

@@ -1,7 +1,7 @@
 import { getAirPollution } from "@/api/api";
 import type { Coords } from "@/types";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Suspense, type Dispatch, type SetStateAction } from "react";
+import React, { Suspense, type Dispatch, type SetStateAction } from "react";
 import Card from "./cards/Card";
 import { Slider } from "./ui/slider";
 
@@ -18,14 +18,14 @@ const SidePanel = (props: Props) => {
   const { isSidePanelOpen, setIsSidePanelOpen } = props;
   return (
     <div
-      className={`fixed top-0 right-0 w-90 h-screen shadow-lg bg-sidebar z-1001 px-4 overflow-y-scroll ${isSidePanelOpen ? "translate-x-0" : "translate-x-full"}`}
+      className={`fixed top-0 right-0 w-(var(--sidebar-width)) h-screen shadow-lg bg-sidebar z-1001 px-4 overflow-y-scroll lg:translate-x-0! ${isSidePanelOpen ? "translate-x-0" : "translate-x-full"}`}
     >
       <button
         onClick={() => {
           setIsSidePanelOpen(false);
         }}
       >
-        <p> ‹ </p>
+        <p className="lg:hidden text-3xl"> ‹‹ </p>
       </button>
       <Suspense fallback={<SidePanelSkeleton />}>
         <AirPollution {...props} />
@@ -49,7 +49,7 @@ const AirPollution = ({ coords }: Props) => {
         <h1 className="text-2xl font-semibold">AQI</h1>
         <Tooltip>
           <TooltipTrigger>
-            <img src="../../public/information.png" className="size-3 invert" />
+            <img src="/information.png" className="size-3 invert" />
           </TooltipTrigger>
           <TooltipContent className="z-2000">
             <p className=" text-red-500">Add to library</p>
@@ -96,10 +96,10 @@ const AirPollution = ({ coords }: Props) => {
         })();
 
         return (
-          <>
+          <React.Fragment key={key}>
             <Card
               key={key}
-              className="hover:scale-105 transition-transform duration-300 from-sidebar-accent to sidebar-accent/60 gap-0!"
+              className="hover:scale-105 transition-transform duration-300 from-sidebar-accent to sidebar-accent/60 gap-0! h-fit"
             >
               <div className="flex justify-between h-10">
                 <div className="flex items-center gap-2">
@@ -107,10 +107,7 @@ const AirPollution = ({ coords }: Props) => {
 
                   <Tooltip>
                     <TooltipTrigger>
-                      <img
-                        src="../../public/information.png"
-                        className="size-3 invert"
-                      />
+                      <img src="information.png" className="size-3 invert" />
                     </TooltipTrigger>
                     <TooltipContent className="z-2001">
                       <p className="max-w-xs">
@@ -123,13 +120,14 @@ const AirPollution = ({ coords }: Props) => {
                 <span className="text-sm font-semibold">{value}</span>
               </div>
               <Slider disabled min={0} max={max} value={[value]} />
-              <div className="flex justify-between text-xs mt-2">
+              <div className="flex justify-between text-xs mt-2 text-amber-200 py-1">
                 <p>0</p>
                 <p>{max}</p>
               </div>
               <div className="flex justify-between">
                 {Object.keys(pollutant).map((quality) => (
                   <span
+                    key={quality}
                     className={`px-2 py-1 rounded-md text-xs font-medium ${quality === currentLevel ? qualityColor : "bg-muted text-muted-foreground"}`}
                   >
                     {quality}
@@ -137,7 +135,7 @@ const AirPollution = ({ coords }: Props) => {
                 ))}
               </div>
             </Card>
-          </>
+          </React.Fragment>
         );
       })}
     </div>

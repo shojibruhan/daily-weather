@@ -16,7 +16,7 @@ const Card = ({ children, title, className, childrenClassName }: Props) => {
         className={`${childrenClassName} animate-[fade-in_0.6s_ease-out_forwards]`}
       >
         {children}
-      </div>{" "}
+      </div>
     </div>
   );
 };

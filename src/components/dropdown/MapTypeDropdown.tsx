@@ -23,15 +23,19 @@ const MapTypeDropdown = ({ mapType, setMapType }: Props) => {
         }
       }}
     >
-      <SelectTrigger className="w-45">
-        <SelectValue placeholder="Weather">
+      <SelectTrigger className="w-64 max-h-6   md:w-45 md:min-h-8">
+        <SelectValue placeholder="Weather" className="text-xs">
           {types.find((t) => t.value === mapType)?.label ?? "Select map type"}
         </SelectValue>
       </SelectTrigger>
       <SelectContent className="z-10000001">
         <SelectGroup>
           {types.map((t) => (
-            <SelectItem key={t.value} value={t.value} className="capitalize">
+            <SelectItem
+              key={t.value}
+              value={t.value}
+              className="capitalize text-xs"
+            >
               {t.label}
             </SelectItem>
           ))}
