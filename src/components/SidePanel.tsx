@@ -5,6 +5,7 @@ import { Suspense, type Dispatch, type SetStateAction } from "react";
 import Card from "./cards/Card";
 import { Slider } from "./ui/slider";
 
+import SidePanelSkeleton from "./skeleton/SidePanelSkeleton";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 type Props = {
@@ -26,7 +27,7 @@ const SidePanel = (props: Props) => {
       >
         <p> ‹ </p>
       </button>
-      <Suspense>
+      <Suspense fallback={<SidePanelSkeleton />}>
         <AirPollution {...props} />
       </Suspense>
     </div>
