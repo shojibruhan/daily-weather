@@ -17,9 +17,9 @@ const WeatherInfo = ({ coords }: Props) => {
   return (
     <Card title="Details" childrenClassName="flex flex-col items-center">
       <span>Country Name:</span>
-      <h2 className="font-semibold text-amber-100 text-xl">{data?.name}</h2>
+      <h2 className="font-semibold text-xl">{data?.name}</h2>
       <div className="flex flex-col items-center">
-        <h2 className="text-6xl font-semibold text-center text-amber-100">
+        <h2 className="text-6xl font-semibold text-center">
           {Math.round(data?.main.temp)}℃
         </h2>
         <WeatherIcon

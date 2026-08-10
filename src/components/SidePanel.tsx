@@ -49,15 +49,13 @@ const AirPollution = ({ coords }: Props) => {
         <h1 className="text-2xl font-semibold">AQI</h1>
         <Tooltip>
           <TooltipTrigger>
-            <img src="/information.png" className="size-3 invert" />
+            <img src="information.png" />
           </TooltipTrigger>
           <TooltipContent className="z-2000">
-            <p className=" text-red-500">Add to library</p>
-          </TooltipContent>
-        </Tooltip>
-        <Tooltip>
-          <TooltipContent className="bg-red-500 text-white p-4 z-2001">
-            TEST TOOLTIP
+            <p className="max-w-xs">
+              Concentration of{" "}
+              {/* {pollutantNameMapping[key.toupp() as Pollutant]} */}
+            </p>
           </TooltipContent>
         </Tooltip>
       </div>
@@ -107,15 +105,32 @@ const AirPollution = ({ coords }: Props) => {
 
                   <Tooltip>
                     <TooltipTrigger>
-                      <img src="information.png" className="size-3 invert" />
+                      <img
+                        src="information.png"
+                        className="size-3 dark:invert"
+                      />
                     </TooltipTrigger>
-                    <TooltipContent className="z-2001">
+                    <TooltipContent className="z-2000">
                       <p className="max-w-xs">
                         Concentration of{" "}
                         {pollutantNameMapping[key.toUpperCase() as Pollutant]}
                       </p>
                     </TooltipContent>
                   </Tooltip>
+                  {/* <Tooltip>
+                    <TooltipTrigger>
+                      <img
+                        src="information.png"
+                        className="size-3 dark:invert"
+                      />
+                    </TooltipTrigger>
+                    <TooltipContent className="z-200001">
+                      <p className="max-w-xs">
+                        Concentration of{" "}
+                        {pollutantNameMapping[key.toUpperCase() as Pollutant]}
+                      </p>
+                    </TooltipContent>
+                  </Tooltip> */}
                 </div>
                 <span className="text-sm font-semibold">{value}</span>
               </div>

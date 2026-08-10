@@ -4,6 +4,7 @@ import { getGeoCodeLocation } from "./api/api";
 import AdditionaInfo from "./components/cards/AdditionaInfo";
 import Summary from "./components/cards/Summary";
 import WeatherInfo from "./components/cards/WeatherInfo";
+import DarkLightToggle from "./components/DarkLightToggle";
 import LocationDropdown from "./components/dropdown/LocationDropdown";
 import MapTypeDropdown from "./components/dropdown/MapTypeDropdown";
 import Map from "./components/Map";
@@ -50,16 +51,17 @@ function App() {
 
         <div className="sticky bg-background z-1001 flex flex-col top-0 p-4 w-full text-xs md:text-2xl md:flex-row gap-1 md:gap-8 justify-between">
           <div className="flex flex-col xs:flex-row gap-2  xs:gap-4">
-            <h1 className="text-xs md:text-2xl font-semibold text-amber-50">
-              Location:{" "}
-            </h1>
+            <h1 className="text-xs md:text-2xl font-semibold">Location: </h1>
             <LocationDropdown location={location} setLocation={setLocation} />
           </div>
           <div className="flex flex-col xs:flex-row  gap-2 xs:gap-4">
-            <h1 className="text-xs md:text-2xl font-semibold text-amber-50 whitespace-nowrap">
+            <h1 className="text-xs md:text-2xl font-semibold whitespace-nowrap">
               Map Type:{" "}
             </h1>
             <MapTypeDropdown mapType={mapType} setMapType={setMapType} />
+          </div>
+          <div className="hidden xs:block">
+            <DarkLightToggle />
           </div>
           {!isSidePanelOpen && (
             <button onClick={() => setIsSidePanelOpen(true)}>
