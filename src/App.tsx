@@ -7,6 +7,7 @@ import WeatherInfo from "./components/cards/WeatherInfo";
 import DarkLightToggle from "./components/DarkLightToggle";
 import LocationDropdown from "./components/dropdown/LocationDropdown";
 import MapTypeDropdown from "./components/dropdown/MapTypeDropdown";
+import Footer from "./components/Footer";
 import Map from "./components/Map";
 import MapLegend from "./components/MapLegend";
 import MobileHeader from "./components/MobileHeader";
@@ -104,6 +105,7 @@ function App() {
         isSidePanelOpen={isSidePanelOpen}
         setIsSidePanelOpen={setIsSidePanelOpen}
       />
+      <Footer />
     </>
   );
 }

@@ -39,3 +39,5 @@ export const WeatherSchema = z.object({
   timezone: z.number(),
   name: z.string(),
 });
+
+export type WeatherDataType = z.infer<typeof WeatherSchema>;
