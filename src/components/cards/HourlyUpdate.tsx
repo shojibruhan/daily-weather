@@ -26,16 +26,6 @@ const HourlyUpdate = ({ coords }: Props) => {
     temp: Math.round(item.main.temp),
     feels_like: Math.round(item.main.feels_like),
   }));
-  // console.log("chartData: ", chartData);
-
-  //   return (
-  //     <div className="space-y-4">
-  //       <div className="flex items-center justify-around">
-  //         <h1 className="text-xl font-bold tracking-tight">Hourly Update</h1>
-  //         <button className="size-10 rounded-md bg-amber-100 shadow-md"></button>
-  //       </div>
-  //     </div>
-  //   );
 
   return (
     <Card>

@@ -1,17 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { Suspense, useState } from "react";
 import { getGeoCodeLocation } from "./api/api";
-import AdditionaInfo from "./components/cards/AdditionaInfo";
+// import AdditionaInfo from "./components/cards/AdditionaInfo";
 import HourlyUpdate from "./components/cards/HourlyUpdate";
 import Summary from "./components/cards/Summary";
 import WeatherInfo from "./components/cards/WeatherInfo";
 import DarkLightToggle from "./components/DarkLightToggle";
 import LocationDropdown from "./components/dropdown/LocationDropdown";
 import MapTypeDropdown from "./components/dropdown/MapTypeDropdown";
-import Footer from "./components/Footer";
 import Map from "./components/Map";
 import MapLegend from "./components/MapLegend";
 import MobileHeader from "./components/MobileHeader";
+import Footer from "./components/RegionDetails";
 import SidePanel from "./components/SidePanel";
 import AdditionInfoSkeleton from "./components/skeleton/AdditionInfoSkeleton";
 import SummarySkeleton from "./components/skeleton/SummarySkeleton";
@@ -95,7 +95,8 @@ function App() {
           </div>
           <div className="col-span-1">
             <Suspense fallback={<AdditionInfoSkeleton />}>
-              <AdditionaInfo coords={coords} />
+              {/* <AdditionaInfo coords={coords} /> */}
+              <Footer coords={coords} />
             </Suspense>
           </div>
         </div>
@@ -106,7 +107,6 @@ function App() {
         setIsSidePanelOpen={setIsSidePanelOpen}
       />
       <HourlyUpdate coords={coords} />
-      <Footer />
     </>
   );
 }
