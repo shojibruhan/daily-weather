@@ -21,7 +21,7 @@ export default getWeather;
 
 export const getGeoCodeLocation = async (location: string) => {
   const response = await fetch(
-    `${GEO_URL}?q=${location}&limit=1&appid=${API_KEY}`,
+    `${GEO_URL}/direct?q=${location}&limit=1&appid=${API_KEY}`,
   );
   const data = await response.json();
 

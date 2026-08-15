@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Suspense, useState } from "react";
 import { getGeoCodeLocation } from "./api/api";
 import AdditionaInfo from "./components/cards/AdditionaInfo";
+import HourlyUpdate from "./components/cards/HourlyUpdate";
 import Summary from "./components/cards/Summary";
 import WeatherInfo from "./components/cards/WeatherInfo";
 import DarkLightToggle from "./components/DarkLightToggle";
@@ -34,7 +35,6 @@ function App() {
   const onMapClick = (lat: number, lon: number) => {
     setCoordinates({ lat, lon });
     setLocation("custom");
-    console.log("mouse click");
   };
   const coords =
     location === "custom"
@@ -105,6 +105,7 @@ function App() {
         isSidePanelOpen={isSidePanelOpen}
         setIsSidePanelOpen={setIsSidePanelOpen}
       />
+      <HourlyUpdate coords={coords} />
       <Footer />
     </>
   );

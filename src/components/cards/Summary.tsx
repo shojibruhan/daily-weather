@@ -1,5 +1,4 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
-import getWeather from "../../api/api";
+import { useWeatherQuery } from "@/hooks/use-weather";
 import type { Coords } from "../../types";
 import Card from "./Card";
 import WeatherIcon from "./WeatherIcon";
@@ -10,11 +9,7 @@ type Props = {
 const Summary = ({ coords }: Props) => {
   const { lat, lon } = coords;
 
-  const { data } = useSuspenseQuery({
-    queryKey: ["weather", coords],
-    queryFn: () => getWeather({ lat, lon }),
-  });
-
+  const { data } = useWeatherQuery({ lat, lon });
   return (
     <Card title="Weather Summary" childrenClassName="flex flex-col gap-4">
       <p className="text-center">

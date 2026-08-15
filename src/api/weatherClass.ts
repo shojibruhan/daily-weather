@@ -8,7 +8,7 @@ const { BASE_URL, GEO_URL, API_KEY, UNITS } = API_CONFIG;
 class WeatherAPI {
   private createUrl(endpoint: string, params: Record<string, string | number>) {
     const searchParams = new URLSearchParams({
-      apiId: API_KEY,
+      appId: API_KEY,
       ...params,
     });
     return `${endpoint}?${searchParams.toString()}`;
@@ -27,7 +27,7 @@ class WeatherAPI {
     const url = this.createUrl(`${BASE_URL}/weather`, {
       lat: lat.toString(),
       lon: lon.toString(),
-      UNITS,
+      units: UNITS,
     });
     return this.fetchData<WeatherDataType>(url);
   }
@@ -35,7 +35,7 @@ class WeatherAPI {
     const url = this.createUrl(`${BASE_URL}/forecast`, {
       lat: lat.toString(),
       lon: lon.toString(),
-      UNITS,
+      units: UNITS,
     });
     return this.fetchData<ForecastDataType>(url);
   }
