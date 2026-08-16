@@ -23,9 +23,7 @@ const Summary = ({ coords }: Props) => {
 
       <div className="flex justify-between">
         <h3>{data.weather[0].main}</h3>
-        <WeatherIcon
-          src={`https://openweathermap.org/payload/api/media/file/${data.weather[0].icon}.png`}
-        />
+        <WeatherIcon src={data.weather[0].icon} />
       </div>
 
       <p>Overall Condition: {data?.weather[0].description}</p>

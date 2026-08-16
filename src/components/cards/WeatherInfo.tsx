@@ -21,7 +21,8 @@ const WeatherInfo = ({ coords }: Props) => {
           {Math.round(data?.main.temp)}℃
         </h2>
         <WeatherIcon
-          src={`https://openweathermap.org/payload/api/media/file/${data.weather[0].icon}.png`}
+          // src={`https://openweathermap.org/payload/api/media/file/${data.weather[0].icon}.png`}
+          src={data.weather[0].icon}
           iconSize="size-16"
         />
         <h3 className="capitalize text-md">{data?.weather[0].description}</h3>

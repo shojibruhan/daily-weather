@@ -2,7 +2,7 @@ import { useWeatherQuery } from "@/hooks/use-weather";
 import type { Coords } from "@/types";
 import { Clock, Compass, Gauge, Globe, Sunrise, Sunset } from "lucide-react";
 import Card from "./cards/Card";
-import { CardContent, CardHeader, CardTitle } from "./ui/card";
+import { CardContent, CardHeader } from "./ui/card";
 
 type Props = {
   coords: Coords;
@@ -68,14 +68,9 @@ const RegionDetails = ({ coords }: Props) => {
   ] as const;
 
   return (
-    // <footer className="border-t backdrop-blur-lg py-6 bg-background/60 bg-linear-to-br from-card to-card/60">
-    //   <div className="container mx-auto text-center  text-gray-600">
-    //     <p>footer</p>
-    //   </div>
-    // </footer>
     <Card title="Region Details" className="text-center">
       <CardHeader>
-        <CardTitle>Weather Details</CardTitle>
+        {/* <CardTitle>Weather Details</CardTitle> */}
         <CardContent>
           <div className="grid gap-6 sm:grid-cols-2">
             {rows.map((row) => (

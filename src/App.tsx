@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { Suspense, useState } from "react";
 import { getGeoCodeLocation } from "./api/api";
-// import AdditionaInfo from "./components/cards/AdditionaInfo";
-import HourlyUpdate from "./components/cards/HourlyUpdate";
+import HourlyForcast from "./components/cards/HourlyForcast";
+import HourlyUpdateCharts from "./components/cards/HourlyUpdateCharts";
 import Summary from "./components/cards/Summary";
 import WeatherInfo from "./components/cards/WeatherInfo";
 import DarkLightToggle from "./components/DarkLightToggle";
@@ -11,9 +11,9 @@ import MapTypeDropdown from "./components/dropdown/MapTypeDropdown";
 import Map from "./components/Map";
 import MapLegend from "./components/MapLegend";
 import MobileHeader from "./components/MobileHeader";
-import Footer from "./components/RegionDetails";
+import RegionDetails from "./components/RegionDetails";
 import SidePanel from "./components/SidePanel";
-import AdditionInfoSkeleton from "./components/skeleton/AdditionInfoSkeleton";
+import RegionDetailsSkeleton from "./components/skeleton/RegionDetailsSkeleton";
 import SummarySkeleton from "./components/skeleton/SummarySkeleton";
 import WeatherInfoSkeleton from "./components/skeleton/WeatherInfoSkeleton";
 import type { Coords } from "./types";
@@ -88,16 +88,26 @@ function App() {
               <WeatherInfo coords={coords} />
             </Suspense>
           </div>
+
+          {/* summery card */}
           <div className="col-span-1">
             <Suspense fallback={<SummarySkeleton />}>
               <Summary coords={coords} />
             </Suspense>
           </div>
+
+          {/* Region Details */}
           <div className="col-span-1">
-            <Suspense fallback={<AdditionInfoSkeleton />}>
+            <Suspense fallback={<RegionDetailsSkeleton />}>
               {/* <AdditionaInfo coords={coords} /> */}
-              <Footer coords={coords} />
+              <RegionDetails coords={coords} />
             </Suspense>
+          </div>
+          <div className=" col-span-2">
+            <HourlyForcast coords={coords} />
+          </div>
+          <div className="col-span-2">
+            <HourlyUpdateCharts coords={coords} />
           </div>
         </div>
       </div>
@@ -106,7 +116,6 @@ function App() {
         isSidePanelOpen={isSidePanelOpen}
         setIsSidePanelOpen={setIsSidePanelOpen}
       />
-      <HourlyUpdate coords={coords} />
     </>
   );
 }

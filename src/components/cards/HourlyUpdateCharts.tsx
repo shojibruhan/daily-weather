@@ -1,8 +1,5 @@
-// import { weatherAPI } from "@/api/weatherClass";
 import { useForeCastQuery } from "@/hooks/use-weather";
 import type { Coords } from "@/types";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-// import { useSuspenseQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
 import {
   Line,
@@ -12,15 +9,18 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { CardContent, CardHeader, CardTitle } from "../ui/card";
+import Card from "./Card";
+
 type Props = {
   coords: Coords;
 };
 
-const HourlyUpdate = ({ coords }: Props) => {
+const HourlyUpdateCharts = ({ coords }: Props) => {
   const { lat, lon } = coords;
 
   const { data: forCastQuery } = useForeCastQuery({ lat, lon });
-  console.log("data from ForCast:", forCastQuery);
+
   const chartData = forCastQuery.list.slice(0, 8).map((item) => ({
     time: format(new Date(item.dt * 1000), "ha"),
     temp: Math.round(item.main.temp),
@@ -94,26 +94,9 @@ const HourlyUpdate = ({ coords }: Props) => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-
-        {/* <div className="grid gap-6 sm:grid-cols-2">
-          {details.map((detail) => (
-            <div
-              key={detail.title}
-              className="flex items-center gap-3 rounded-lg border p-4"
-            >
-              <detail.icon className={`h-5 w-5 ${detail.color}`} />
-              <div>
-                <p className="text-sm font-medium leading-none">
-                  {detail.title}
-                </p>
-                <p className="text-sm text-muted-foreground">{detail.value}</p>
-              </div>
-            </div>
-          ))}
-        </div> */}
       </CardContent>
     </Card>
   );
 };
 
-export default HourlyUpdate;
+export default HourlyUpdateCharts;
