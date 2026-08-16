@@ -8,8 +8,8 @@ import WeatherInfo from "./components/cards/WeatherInfo";
 import DarkLightToggle from "./components/DarkLightToggle";
 import LocationDropdown from "./components/dropdown/LocationDropdown";
 import MapTypeDropdown from "./components/dropdown/MapTypeDropdown";
-import Map from "./components/Map";
-import MapLegend from "./components/MapLegend";
+import Map from "./components/Map/Map";
+import MapLegend from "./components/Map/MapLegend";
 import MobileHeader from "./components/MobileHeader";
 import RegionDetails from "./components/RegionDetails";
 import SidePanel from "./components/SidePanel";
@@ -81,6 +81,7 @@ function App() {
             <Map coords={coords} onMapClick={onMapClick} mapType={mapType} />
             <MapLegend mapType={mapType} />
           </div>
+          {/* <MapBody coords={coords} onMapClick={onMapClick} mapType={mapType} /> */}
 
           {/* Details Card  */}
           <div className="col-span-1 md:col-span-2">

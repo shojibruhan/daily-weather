@@ -12,10 +12,18 @@ const WeatherInfo = ({ coords }: Props) => {
 
   const { data } = useWeatherQuery({ lat, lon });
 
+  const showCountry = (name: string): string | undefined => {
+    return new Intl.DisplayNames(["en"], {
+      type: "region",
+    }).of(name);
+  };
+
   return (
-    <Card title="Details" childrenClassName="flex flex-col items-center">
-      <span>Country Name:</span>
-      <h2 className="font-semibold text-xl">{data?.name}</h2>
+    <Card childrenClassName="flex flex-col items-center">
+      {/* <span>Country Name:</span> */}
+      <h2 className="font-semibold text-xl">
+        {showCountry(data?.sys.country)}
+      </h2>
       <div className="flex flex-col items-center">
         <h2 className="text-6xl font-semibold text-center">
           {Math.round(data?.main.temp)}℃
@@ -34,10 +42,11 @@ const WeatherInfo = ({ coords }: Props) => {
             hour: "2-digit",
             minute: "2-digit",
             hour12: true,
-          }).format(new Date(data?.dt * 1000))}{" "}
+            timeZone: "UTC",
+          }).format(new Date((data?.dt + data?.timezone) * 1000))}{" "}
         </h3>
       </div>
-      <div className="flex justify-between w-full">
+      <div className="flex justify-between w-full my-4">
         <div className="flex flex-col items-center gap-2">
           <p className="text-gray-500">Humidity</p>
           <p> {data?.main.humidity} %</p>

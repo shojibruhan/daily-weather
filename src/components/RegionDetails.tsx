@@ -12,6 +12,12 @@ const RegionDetails = ({ coords }: Props) => {
   const { lat, lon } = coords;
   const { data } = useWeatherQuery({ lat, lon });
 
+  const showCountry = (name: string): string | undefined => {
+    return new Intl.DisplayNames(["en"], {
+      type: "region",
+    }).of(name);
+  };
+
   const formatTime = (time: number): string => {
     return new Date(time * 1000).toLocaleTimeString(undefined, {
       hour: "2-digit",
@@ -30,7 +36,7 @@ const RegionDetails = ({ coords }: Props) => {
   const rows = [
     {
       label: "Country",
-      value: `${data.sys.country}`,
+      value: showCountry(data.sys.country),
       icon: Globe,
       color: "text-blue-500",
     },

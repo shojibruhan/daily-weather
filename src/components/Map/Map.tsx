@@ -2,7 +2,7 @@ import { MapStyle, MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
 import "leaflet/dist/leaflet.css";
 import { useEffect } from "react";
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
-import type { Coords } from "../types";
+import type { Coords } from "../../types";
 const API_KEY = import.meta.env.VITE_API_KEY;
 const MAP_API_KEY = import.meta.env.VITE_MAPTILER_API_KEY;
 
