@@ -14,6 +14,7 @@ import MapLegend from "./components/Map/MapLegend";
 import MobileHeader from "./components/MobileHeader";
 import RegionDetails from "./components/RegionDetails";
 import SidePanel from "./components/SidePanel";
+import HourlyForcastSkeleton from "./components/skeleton/HourlyForcastSkeleton";
 import RegionDetailsSkeleton from "./components/skeleton/RegionDetailsSkeleton";
 import SummarySkeleton from "./components/skeleton/SummarySkeleton";
 import WeatherInfoSkeleton from "./components/skeleton/WeatherInfoSkeleton";
@@ -25,7 +26,7 @@ function App() {
     lat: 23.8103,
     lon: 90.4125,
   });
-  const [location, setLocation] = useState("Tokyo");
+  const [location, setLocation] = useState("New York");
   const [mapType, setMapType] = useState("clouds_new");
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
@@ -76,24 +77,23 @@ function App() {
           )}
         </div>
 
-        {/* Card with map  */}
-        <div className="grid grid-cols-1 md:grid-cols-2 space-y-4 space-x-2 2xl:grid-cols-4 2xl:grid-rows-4">
+        {/* Card Item: map and weather details  */}
+        <div className="grid grid-cols-1 md:grid-cols-2 p-2 sm:p-0 space-y-4 space-x-2 2xl:grid-cols-4 2xl:grid-rows-4">
           {/* map body */}
-          <div className="relative col-span-1 md:col-span-2 gap-2 2xl:grid-cols-4 2xl:grid-rows-2">
+          <div className="relative col-span-2 gap-2 2xl:grid-cols-4 2xl:grid-rows-2">
             <Map coords={coords} onMapClick={onMapClick} mapType={mapType} />
             <MapLegend mapType={mapType} />
           </div>
-          {/* <MapBody coords={coords} onMapClick={onMapClick} mapType={mapType} /> */}
 
           {/* Details Card  */}
-          <div className="col-span-1 md:col-span-2">
+          <div className="col-span-2">
             <Suspense fallback={<WeatherInfoSkeleton />}>
               <WeatherInfo coords={coords} />
             </Suspense>
           </div>
 
           {/* summery card */}
-          <div className="col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <Suspense fallback={<SummarySkeleton />}>
               <Summary coords={coords} />
             </Suspense>
@@ -105,12 +105,20 @@ function App() {
               <RegionDetails coords={coords} />
             </Suspense>
           </div>
-          <div className="col-span-2">
-            <HourlyForcast coords={coords} />
+
+          {/* Hourly Forcast */}
+          <div className="col-span-2 overflow-hidden">
+            <Suspense fallback={<HourlyForcastSkeleton />}>
+              <HourlyForcast coords={coords} />
+            </Suspense>
           </div>
+
+          {/* Graph/charts  */}
           <div className="col-span-2">
             <HourlyUpdateCharts coords={coords} />
           </div>
+
+          {/* Weekly forcast  */}
           <div className="col-span-2">
             <Suspense fallback={<WeeklyForcastSkeleton />}>
               <WeeklyForcast coords={coords} />
@@ -118,6 +126,8 @@ function App() {
           </div>
         </div>
       </div>
+
+      {/* SidePanel */}
       <SidePanel
         coords={coords}
         isSidePanelOpen={isSidePanelOpen}

@@ -13,7 +13,7 @@ const Summary = ({ coords }: Props) => {
   return (
     <Card
       title="Weather Summary"
-      className="text-center"
+      className="text-center sm:pb-10 md:pb-7 lg:pb-16  xl:pb-6"
       childrenClassName="flex flex-col gap-4"
     >
       <p className="text-center">
@@ -38,7 +38,7 @@ const Summary = ({ coords }: Props) => {
         <h2 className="text-center font-semibold dark:text-amber-300">
           Temperature Condition
         </h2>
-        <div className="flex justify-around py-1">
+        <div className="flex justify-around">
           <div className="flex flex-col">
             <p>Max. Temp:</p>
             <p> {data?.main.temp_max}℃</p>

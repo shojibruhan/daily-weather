@@ -22,7 +22,7 @@ const HourlyForcast = ({ coords }: Props) => {
     <Card
       title="Hourly Forcast"
       className="text-center items-center"
-      childrenClassName="flex gap-12 overflow-x-scroll"
+      childrenClassName="flex gap-12 overflow-x-scroll sm:overflow-hidden"
     >
       {data.list.slice(0, 9).map((hour) => {
         return (

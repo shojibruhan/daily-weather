@@ -18,7 +18,9 @@ const SidePanel = (props: Props) => {
   const { isSidePanelOpen, setIsSidePanelOpen } = props;
   return (
     <div
-      className={`fixed top-0 right-0 w-(var(--sidebar-width)) h-screen shadow-lg bg-sidebar z-1001 px-4 overflow-y-scroll lg:translate-x-0! ${isSidePanelOpen ? "translate-x-0" : "translate-x-full"}`}
+      className={`fixed top-0 right-0 w-(var(--sidebar-width)) h-screen shadow-lg 
+        bg-sidebar z-1001 px-4 overflow-y-scroll lg:translate-x-0! 
+        ${isSidePanelOpen ? "translate-x-0" : "translate-x-full"}`}
     >
       <button
         onClick={() => {
