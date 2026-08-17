@@ -1,7 +1,8 @@
 import { useForeCastQuery } from "@/hooks/use-weather";
 import type { Coords } from "@/types";
-import Card from "./cards/Card";
-import WeatherIcon from "./cards/WeatherIcon";
+
+import Card from "./Card";
+import WeatherIcon from "./WeatherIcon";
 
 type Props = {
   coords: Coords;
@@ -21,7 +22,7 @@ type DailyForcast = {
   };
 };
 
-const TestSidePanael = ({ coords }: Props) => {
+const WeeklyForcast = ({ coords }: Props) => {
   const { lat, lon } = coords;
   const { data } = useForeCastQuery({ lat, lon });
 
@@ -92,4 +93,4 @@ const TestSidePanael = ({ coords }: Props) => {
   );
 };
 
-export default TestSidePanael;
+export default WeeklyForcast;

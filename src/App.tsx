@@ -5,6 +5,7 @@ import HourlyForcast from "./components/cards/HourlyForcast";
 import HourlyUpdateCharts from "./components/cards/HourlyUpdateCharts";
 import Summary from "./components/cards/Summary";
 import WeatherInfo from "./components/cards/WeatherInfo";
+import WeeklyForcast from "./components/cards/WeeklyForcast";
 import DarkLightToggle from "./components/DarkLightToggle";
 import LocationDropdown from "./components/dropdown/LocationDropdown";
 import MapTypeDropdown from "./components/dropdown/MapTypeDropdown";
@@ -104,11 +105,14 @@ function App() {
               <RegionDetails coords={coords} />
             </Suspense>
           </div>
-          <div className=" col-span-2">
+          <div className="col-span-2">
             <HourlyForcast coords={coords} />
           </div>
           <div className="col-span-2">
             <HourlyUpdateCharts coords={coords} />
+          </div>
+          <div className="col-span-2">
+            <WeeklyForcast coords={coords} />
           </div>
         </div>
       </div>
