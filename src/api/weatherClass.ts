@@ -1,3 +1,4 @@
+import type { AirPollutionDataType } from "@/schemas/airPollutionSchema";
 import type { ForecastDataType } from "@/schemas/forcastSchema";
 import type { ReverseGeocodeDataType } from "@/schemas/reverseGeoCodeSchema";
 import { type WeatherDataType } from "@/schemas/weatherSchemas";
@@ -49,6 +50,13 @@ class WeatherAPI {
       limit: 1,
     });
     return this.fetchData<ReverseGeocodeDataType[]>(url);
+  }
+  async getAirPollution({ lat, lon }: Coords): Promise<AirPollutionDataType> {
+    const url = this.createUrl(`${BASE_URL}/air_pollution`, {
+      lat: lat.toString(),
+      lon: lon.toString(),
+    });
+    return this.fetchData<AirPollutionDataType>(url);
   }
 }
 

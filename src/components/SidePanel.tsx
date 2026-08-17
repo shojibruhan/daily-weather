@@ -1,10 +1,9 @@
-import { getAirPollution } from "@/api/api";
 import type { Coords } from "@/types";
-import { useSuspenseQuery } from "@tanstack/react-query";
 import React, { Suspense, type Dispatch, type SetStateAction } from "react";
 import Card from "./cards/Card";
 import { Slider } from "./ui/slider";
 
+import { useAirPollution } from "@/hooks/use-weather";
 import SidePanelSkeleton from "./skeleton/SidePanelSkeleton";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
@@ -39,14 +38,18 @@ const SidePanel = (props: Props) => {
 export default SidePanel;
 
 const AirPollution = ({ coords }: Props) => {
-  const { data } = useSuspenseQuery({
-    queryKey: ["pollution", coords],
-    queryFn: () => getAirPollution(coords),
-  });
+  const { lat, lon } = coords;
+  // const { data } = useSuspenseQuery({
+  //   queryKey: ["pollution", coords],
+  //   queryFn: () => getAirPollution(coords),
+  // });
+
+  const { data } = useAirPollution({ lat, lon });
+
   return (
     <div className="flex flex-col gap-4 h-60">
       <h1 className="text-2xl font-semibold pt-5">Air Pollution</h1>
-      <h1 className="text-5xl font-semibold">{data.list[0].main.aqi}</h1>
+      <h1 className="text-5xl font-semibold">{data?.list[0].main.aqi}</h1>
       <div className="flex items-center gap-2">
         <h1 className="text-2xl font-semibold">AQI</h1>
         <Tooltip>
