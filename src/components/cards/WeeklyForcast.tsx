@@ -80,8 +80,6 @@ const WeeklyForcast = ({ coords }: Props) => {
           <div key={item.date} className="flex justify-between text-sm">
             <p className="w-6">{timeFormater(item.date)}</p>
             <WeatherIcon src={item.weather.icon} iconSize="size-8" />
-            {/* <p>{Math.round(item.main.temp)}℃</p> */}
-            {/* <p>{Math.round(item.humidity)}℃</p> */}
             <p>{Math.round(item.temp_max)}℃</p>
             <p>{Math.round(item.temp_min)}℃</p>
             <p>{Math.round(item.humidity)}%</p>

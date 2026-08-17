@@ -17,6 +17,7 @@ import SidePanel from "./components/SidePanel";
 import RegionDetailsSkeleton from "./components/skeleton/RegionDetailsSkeleton";
 import SummarySkeleton from "./components/skeleton/SummarySkeleton";
 import WeatherInfoSkeleton from "./components/skeleton/WeatherInfoSkeleton";
+import WeeklyForcastSkeleton from "./components/skeleton/WeeklyForcastSkeleton";
 import type { Coords } from "./types";
 
 function App() {
@@ -101,7 +102,6 @@ function App() {
           {/* Region Details */}
           <div className="col-span-1">
             <Suspense fallback={<RegionDetailsSkeleton />}>
-              {/* <AdditionaInfo coords={coords} /> */}
               <RegionDetails coords={coords} />
             </Suspense>
           </div>
@@ -112,7 +112,9 @@ function App() {
             <HourlyUpdateCharts coords={coords} />
           </div>
           <div className="col-span-2">
-            <WeeklyForcast coords={coords} />
+            <Suspense fallback={<WeeklyForcastSkeleton />}>
+              <WeeklyForcast coords={coords} />
+            </Suspense>
           </div>
         </div>
       </div>
